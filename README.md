@@ -8,7 +8,7 @@ A powerful tool for developing, testing, and analyzing trading strategies using 
   - Create custom trading strategies using technical indicators
   - Flexible signal generation system
 
-- 🔄 To DO
+- 🔄 To Do
 - 📈 Performance Analysis
 - 🛠️ Strategy Optimization
 - 📊 Backtesting
@@ -36,14 +36,14 @@ pip install -r requirements.txt
 ### Basic Example
 
 just run main.py
-- 1. select indicator library (currently only ta-lib and custom libs are supported)
-- 2. add indicators (click add button) 
-- 3. after don selecting indicators click next button
-- 4. [optional] if you want to add shift, rolling mean, etc then select on "special case windows" option and dont forgate to add 
-- 5. if dont want anything click next button
-- 6. on "create strategy window" select what do you want to do
-- 7. you can add multiple conditions there
-- 8. click finalise button to get strategy build
+- select indicator library (currently only ta-lib and custom libs are supported)
+- add indicators (click add button) 
+- after don selecting indicators click next button
+- [optional] if you want to add shift, rolling mean, etc then select on "special case windows" option and dont forgate to add 
+- if dont want anything click next button
+- on "create strategy window" select what do you want to do
+- you can add multiple conditions there
+- click finalise button to get strategy build
 
 
 
