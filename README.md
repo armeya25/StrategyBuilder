@@ -9,9 +9,10 @@ A powerful tool for developing, testing, and analyzing trading strategies using 
   - Flexible signal generation system
 
 - 🔄 To Do
-- 📈 Performance Analysis
-- 🛠️ Strategy Optimization
-- 📊 Backtesting
+- Performance Analysis
+- Strategy Optimization
+- Backtesting
+- Performance Metrics
 
 ## Installation
 
@@ -48,7 +49,7 @@ just run main.py
 
 
 ## Data Requirements
-
+in csv format
 The tool expects your data to have at least these columns:
 - `date`: Date of the data point
 - `open`: Opening price
@@ -56,16 +57,6 @@ The tool expects your data to have at least these columns:
 - `low`: Lowest price
 - `close`: Closing price
 - `volume`: Trading volume (optional)
-
-## Performance Metrics
-
-The tool calculates several important performance metrics:
-
-- Annual Returns: Compounded returns over the period
-- Volatility: Annualized standard deviation of returns
-- Sharpe Ratio: Risk-adjusted returns
-- Maximum Drawdown: Peak-to-trough decline
-- Sortino Ratio: Risk-adjusted returns focusing on downside volatility
 
 ## Contributing
 
