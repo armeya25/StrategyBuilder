@@ -1,5 +1,3 @@
-output_file = "output.py"
-
 [select_libs]
     charts = ['lightweight_charts', 'finplot']
     indicator_libs = ["talib", "pandas_ta", "finta", "custom"]

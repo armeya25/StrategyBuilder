@@ -6,7 +6,7 @@ import toml
 class Base:
     config_location = "lib/configs"
     base_configs = toml.load(f"{config_location}/configs.toml")
-    output_file = base_configs['output_file']
+    output_file = "testing.py"
     ## all the columns that are available
     ## and that is to be added here
     all_cols = ["None", 'close', 'open', 'high', 'low', 'volume']
