@@ -411,7 +411,10 @@ class Main(Builder):
     ############################################################################################################
     def __btn_window_strategy_add_clicked(self):
         condition = self.__combo_vars['strategy_window_combo_cond_var'].get()
-
+        if condition in ['', 'None']:
+            messagebox.showerror("Error", "condition cannot be empty")
+            return
+        
         value1 = self.__entry_input_var_dict['strategy_value1'].get()
         optional_col1 = self.__combo_vars['strategy_window_combo_optional_col1_var'].get()
         ## if value1 and optional_col1 are not empty at same time
@@ -426,10 +429,14 @@ class Main(Builder):
             return
         
         col2 = self.__combo_vars['strategy_window_combo_col2_var'].get()
-        if col2 in ['', 'None']:
-            ## value1 or optional_col1 should not be empty
-            if value1 in ['', 'None'] and optional_col1 in ['', 'None']:
-                messagebox.showerror("Error", "col2 cannot be empty")
+        if col2 not in ['', 'None']:
+            if condition != "is_between":
+                ## value1 or optional_col1 should be empty
+                if value1 not in ['', 'None'] or optional_col1 not in ['', 'None']:
+                    messagebox.showerror("Error", "either select Values or column 2")
+                    return
+            else:
+                messagebox.showerror("Error", "for `is_between` condition, select `Values`")
                 return
         
         buy_sell = self.__combo_vars['strategy_window_buy_sell_var'].get()

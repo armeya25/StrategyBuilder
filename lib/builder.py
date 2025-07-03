@@ -188,36 +188,58 @@ class Builder(Base):
         else:
             raise ValueError("buy_sell should be buy or sell")
     ############################################################################################################
-    def __conditions(self, params:dict) -> str:
-        condition =  params['cond']
+    def __set_cols(self, params:dict) -> str:
+        colx = None
+        coly = None
         col2 = None
-        if params['col2'] != None:
-            col2 = f'pl.col("{params['col2']}")'
-        else:
-            col2 = params['value1']
+        if params['value1'] not in [None, "None"]:
+            colx = params['value1']
+        elif params['optional_col1'] not in [None, "None"]:
+            colx = f'pl.col("{params['optional_col1']}")'
 
-        if condition == "cross above":
-            return f'((pl.col("{params['col1']}").shift() < {col2}.shift()) & (pl.col("{params['col1']}") > {col2})) &'
+        if params['value2'] not in [None, "None"]:
+            coly = params['value2']
+        elif params['optional_col2'] not in [None, "None"]:
+            coly = f'pl.col("{params['optional_col2']}")'
+        
+        if params['col2'] not in [None, "None"]:
+            col2 = f'pl.col("{params['col2']}")'
+        return colx, coly, col2
+    ############################################################################################################
+    def __conditions(self, params:dict) -> str:
+        new_cols = self.__set_cols(params)
+        col1 = f'pl.col("{params['col1']}")'
+        condition = params['cond']
+
+        col2 = new_cols[0] if new_cols[0] != None else new_cols[1] if new_cols[1] != None else new_cols[2]
+        if condition == "==":
+            return f'({col1} == {col2}) &'
+        elif condition == "!=":
+            return f'({col1} != {col2}) &'
+        elif condition == ">":
+            return f'({col1} > {col2}) &'
+        elif condition == "<":
+            return f'({col1} < {col2}) &'
+        elif condition == ">=":
+            return f'({col1} >= {col2}) &'
+        elif condition == "<=":
+            return f'({col1} <= {col2}) &'
+        elif condition == "+":
+            return f'({col1} + {col2}) &'
+        elif condition == "-":
+            return f'({col1} - {col2}) &'
+        elif condition == "*":
+            return f'({col1} * {col2}) &'
+        elif condition == "/":
+            return f'({col1} / {col2}) &'
+        elif condition == "cross above":
+            return f'(({col1}.shift() < {col2}.shift()) & ({col1} > {col2})) &'
         elif condition == "cross below":
-            return f'((pl.col("{params['col1']}").shift() > {col2}.shift()) & (pl.col("{params['col1']}") < {col2})) &'
+            return f'(({col1}.shift() > {col2}.shift()) & ({col1} < {col2})) &'
         elif condition == "is_between":
             val1 = params['value1'] if params['value1'] != None else f'pl.col("{params['optional_col1']}")'
             val2 = params['value2'] if params['value2'] != None else f'pl.col("{params['optional_col2']}")'
-            return f'((pl.col("{params['col1']}").is_between({val1}, {val2}))) &'
-        elif condition == ">":
-            return f'((pl.col("{params['col1']}") > {col2})) &'
-        elif condition == "<":
-            return f'((pl.col("{params['col1']}") < {col2})) &'
-        elif condition == "==":
-            return f'((pl.col("{params['col1']}") == {col2})) &'
-        elif condition == "!=":
-            return f'((pl.col("{params['col1']}") != {col2})) &'
-        elif condition == ">=":
-            return f'((pl.col("{params['col1']}") >= {col2})) &'
-        elif condition == "<=":
-            return f'((pl.col("{params['col1']}") <= {col2})) &'
-        else:
-            raise NotImplementedError("condition not implemented")
+            return f'(({col1}").is_between({val1}, {val2}))) &'
     ############################################################################################################
     def btn_strategy_window_finalise_clicked(self) -> None:
         ## selected indicators should not be empty
@@ -300,7 +322,7 @@ class Builder(Base):
                     col = self.__signal_list_to_str(self.__lists_for_strategy['signal_sell'])
                     for c in col:
                         f.write(c)
-                    f.write('\t\t\t\t\t\t)\n')    ## close when conditon
+                    f.write('\t\t\t\t\t\t)\n')    ## close when condition
                     f.write('\t\t\t\t\t\t.then(pl.lit("sell"))\n')
                     f.write('\t\t\t\t\t\t.alias("signal")\n')
 
@@ -372,7 +394,7 @@ class Builder(Base):
                 f.write(f'\n\t\t## lines setup\n')
                 for line in self.__lists_for_chart['lines']:
                     line_name = f'{line}_line'
-                    f.write(f'\t\t{line_name} = chart.create_line(name="{line}", width=1, price_label=False, price_line=False, color=self.__generate_random_color())\n')
+                    f.write(f'\t\t{line_name} = chart.create_line(name="{line}", price_label=False, price_line=False, color=self.__generate_random_color())\n')
                     f.write(f'\t\t{line_name}.set(self.df.select("date", "{line}").to_pandas())\n')
             
             ## if there is subcharts available to plot
@@ -397,7 +419,7 @@ class Builder(Base):
             f.write('\t\tsignal = self.df.filter(pl.col("signal").is_not_null()).select("date", "signal")\n')
             f.write('\t\tfor f in signal.iter_slices(1):\n')
             f.write('\t\t\tif f.item(0, "signal") == "buy":\n')
-            f.write('\t\t\t\tchart.marker(time=f.item(0, "date"),position="below", color="green", shape="arrow_up", text="BUY")\n')
+            f.write('\t\t\t\tchart.marker(time=f.item(0, "date"),position="above", color="green", shape="arrow_down", text="BUY")\n')
             f.write('\t\t\telse:\n')
             f.write('\t\t\t\tchart.marker(time=f.item(0, "date"),position="above", color="red", shape="arrow_down", text="SELL")\n')
 		
