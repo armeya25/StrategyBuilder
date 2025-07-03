@@ -1,0 +1,11 @@
+output_file = "output.py"
+
+[select_libs]
+    charts = ['lightweight_charts', 'finplot']
+    indicator_libs = ["talib", "pandas_ta", "finta", "custom"]
+
+[conditions]
+    conditions = ["None", "cross above", "cross below", "is_between", "==", ">", "<", ">=", "<=", "!=", 
+                    "+", "-", "*", "/"]
+    special = ["None", "shift", "rolling_sum", "rolling_mean", "rolling_max", "rolling_min"]
+

@@ -1,0 +1,13 @@
+[indicators]
+    ## Overlap Studies Functions
+    [indicators.tmp]
+        return_cols = ["bband_lower", "bband_middle", "bband_upper"]
+        [indicators.tmp.inputs]
+            input_cols = "close"
+            timeperiod = 20
+            nbdevup = 2
+            nbdevdn = 2
+        [indicators.tmp.charts]
+            lines = ["bband_lower", "bband_middle", "bband_upper"]
+            subchart_lines = []
+            subchart_histos = []

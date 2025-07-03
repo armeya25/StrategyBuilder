@@ -1,0 +1,15 @@
+[indicators]
+    [indicators.ichimoku]
+        return_cols = ['leading_span_b', 'leading_span_a', 'chikou_span', 'kijun_sen', 'tenkan_sen']
+    [indicators.ichimoku.inputs]
+        input_cols = ["close", "high", "low"]
+        timeperiod = 9
+        fastperiod = 26
+        slowperiod = 52
+    [indicators.ichimoku.charts]
+        lines = ['leading_span_b', 'leading_span_a', 'chikou_span', 'kijun_sen', 'tenkan_sen']
+        subchart_lines = []
+        subchart_histos = []
+
+
+    

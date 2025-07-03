@@ -1,0 +1,560 @@
+## refer here
+## https://github.com/TA-Lib/ta-lib-python/blob/master/docs/doc_index.md
+
+[indicators]
+    ## Overlap Studies Functions
+    [indicators.bbands]
+        return_cols = ["bband_lower", "bband_middle", "bband_upper"]
+        [indicators.bbands.inputs]
+            input_cols = "close"
+            timeperiod = 20
+            nbdevup = 2
+            nbdevdn = 2
+        [indicators.bbands.charts]
+            lines = ["bband_lower", "bband_middle", "bband_upper"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.dema]
+        return_cols = "dema"
+        [indicators.dema.inputs]
+            input_cols = "close"
+            timeperiod = 20
+        [indicators.dema.charts]
+            lines = ["dema"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.ema]
+        return_cols = "ema"
+        [indicators.ema.inputs]
+            input_cols = "close"
+            timeperiod = 20
+        [indicators.ema.charts]
+            lines = ["ema"]
+            subchart_lines = []
+            subchart_histos = []
+   
+    [indicators.ht_trendline]
+        return_cols = "ht_trendline"
+        [indicators.ht_trendline.inputs]
+            input_cols = "close"
+        [indicators.ht_trendline.charts]
+            lines = ["ht_trendline"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.kama]
+        return_cols = "kama"
+        [indicators.kama.inputs]
+            input_cols = "close"
+            timeperiod = 20
+        [indicators.kama.charts]
+            lines = ["kama"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.ma]
+        return_cols = "ma"
+        [indicators.ma.inputs]
+            input_cols = "close"
+            timeperiod = 20
+        [indicators.ma.charts]
+            lines = ["ma"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.mama]
+        return_cols = ["fama", "mama"]
+        [indicators.mama.inputs]
+            input_cols = "close"
+            fastlimit = 0.5
+            slowlimit = 0.05
+        [indicators.mama.charts]
+            lines = ["fama", "mama"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.sar]
+        return_cols = ["sar"]
+        [indicators.sar.inputs]
+            input_cols = ["low", "high"]
+            acceleration = 0
+            maximum = 0
+        [indicators.sar.charts]
+            lines = ["sar"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.sma]
+        return_cols = "sma"
+        [indicators.sma.inputs]
+            input_cols = "close"
+            timeperiod = 20
+        [indicators.sma.charts]
+            lines = ["sma"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.tema]
+        return_cols = "tema"
+        [indicators.tema.inputs]
+            input_cols = "close"
+            timeperiod = 20
+        [indicators.tema.charts]
+            lines = ["tema"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.trima]
+        return_cols = "trima"
+        [indicators.trima.inputs]
+            input_cols = "close"
+            timeperiod = 20
+        [indicators.trima.charts]
+            lines = ["trima"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.wma]
+        return_cols = "wma"
+        [indicators.wma.inputs]
+            input_cols = "close"
+            timeperiod = 20
+        [indicators.wma.charts]
+            lines = ["wma"]
+            subchart_lines = []
+            subchart_histos = []
+    ##################################
+    ## Momentum Indicator Functions ##
+    ##################################
+    [indicators.adx]
+        return_cols = "adx"
+        [indicators.adx.inputs]
+            input_cols = ["close", "low", "high"]
+            timeperiod = 14
+        [indicators.adx.charts]
+            lines = []
+            subchart_lines = ["adx"]
+            subchart_histos = []
+    
+    [indicators.adxr]
+        return_cols = "adxr"
+        [indicators.adxr.inputs]
+            input_cols = ["close", "low", "high"]
+            timeperiod = 14
+        [indicators.adxr.charts]
+            lines = []
+            subchart_lines = ["adxr"]
+            subchart_histos = []
+    
+    [indicators.apo]
+        return_cols = "apo"
+        [indicators.apo.inputs]
+            input_cols = "close"
+            fastperiod = 12
+            slowperiod = 26
+        [indicators.apo.charts]
+            lines = []
+            subchart_lines = ["apo"]
+            subchart_histos = []
+    
+    [indicators.aroon]
+        return_cols = ["aroon_up", "aroon_down"]
+        [indicators.aroon.inputs]
+            input_cols = ["low", "high"]
+            timeperiod = 14
+        [indicators.aroon.charts]
+            lines = []
+            subchart_lines = ["aroon_up", "aroon_down"]
+            subchart_histos = []
+    
+    [indicators.aroonosc]
+        return_cols = "aroonosc"
+        [indicators.aroonosc.inputs]
+            input_cols = ["low", "high"]
+            timeperiod = 14
+        [indicators.aroonosc.charts]
+            lines = []
+            subchart_lines = ["aroonosc"]
+            subchart_histos = []
+    
+    [indicators.bop]
+        return_cols = "bop"
+        [indicators.bop.inputs]
+            input_cols = ["close", "low", "high", "open"]
+        [indicators.bop.charts]
+            lines = ["bop"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.cci]
+        return_cols = "cci"
+        [indicators.cci.inputs]
+            input_cols = ["close", "low", "high"]
+            timeperiod = 14
+        [indicators.cci.charts]
+            lines = ["cci"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.cmo]
+        return_cols = "cmo"
+        [indicators.cmo.inputs]
+            input_cols = "close"
+            timeperiod = 14
+        [indicators.cmo.charts]
+            lines = ["cmo"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.dx]
+        return_cols = "dx"
+        [indicators.dx.inputs]
+            input_cols = ["close", "low", "high"]
+            timeperiod = 14
+        [indicators.dx.charts]
+            lines = ["dx"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.macd]
+        return_cols = ["macd_hist", "macd_signal", "macd"]
+        [indicators.macd.inputs]
+            input_cols = "close"
+            fastperiod = 12
+            slowperiod = 26
+            signalperiod = 9
+        [indicators.macd.charts]
+            lines = []
+            subchart_lines = ["macd_hist", "macd_signal", "macd"]
+            subchart_histos = []
+    
+    [indicators.macdext]
+        return_cols = ["macd_hist", "macd_signal", "macd"]
+        [indicators.macdext.inputs]
+            input_cols = "close"
+            fastperiod = 12
+            slowperiod = 26
+            signalperiod = 9
+        [indicators.macdext.charts]
+            lines = ["macd_hist", "macd_signal", "macd"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.macdfix]
+        return_cols = ["macd_hist", "macd_signal", "macd"]
+        [indicators.macdfix.inputs]
+            input_cols = "close"
+            signalperiod = 9
+        [indicators.macdfix.charts]
+            lines = ["macd_hist", "macd_signal", "macd"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.mfi]
+        return_cols = "mfi"
+        [indicators.mfi.inputs]
+            input_cols = ["high", "low", "close", "volume"]
+            timeperiod = 14
+        [indicators.mfi.charts]
+            lines = ["mfi"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.minus_di]
+        return_cols = "minus_di"
+        [indicators.minus_di.inputs]
+            input_cols = ["close", "low", "high"]
+            timeperiod = 14
+        [indicators.minus_di.charts]
+            lines = ["minus_di"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.minus_dm]
+        return_cols = "minus_dm"
+        [indicators.minus_dm.inputs]
+            input_cols = ["low", "high"]
+            timeperiod = 14
+        [indicators.minus_dm.charts]
+            lines = ["minus_dm"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.mom]
+        return_cols = "mom"
+        [indicators.mom.inputs]
+            input_cols = "close"
+            timeperiod = 10
+        [indicators.mom.charts]
+            lines = ["mom"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.plus_di]
+        return_cols = "plus_di"
+        [indicators.plus_di.inputs]
+            input_cols = ["close", "low", "high"]
+            timeperiod = 14
+        [indicators.plus_di.charts]
+            lines = ["plus_di"]
+            subchart_lines = []
+            subchart_histos = []
+    [indicators.plus_dm]
+        return_cols = "plus_dm"
+        [indicators.plus_dm.inputs]
+            input_cols = ["low", "high"]
+            timeperiod = 14
+        [indicators.plus_dm.charts]
+            lines = ["plus_dm"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.ppo]
+        return_cols = "ppo"
+        [indicators.ppo.inputs]
+            input_cols = "close"
+            fastperiod = 12
+            slowperiod = 26
+        [indicators.ppo.charts]
+            lines = ["ppo"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.roc]
+        return_cols = "roc"
+        [indicators.roc.inputs]
+            input_cols = "close"
+            timeperiod = 10
+        [indicators.roc.charts]
+            lines = []
+            subchart_lines = ["roc"]
+            subchart_histos = []
+    
+    [indicators.rocp]
+        return_cols = "rocp"
+        [indicators.rocp.inputs]
+            input_cols = "close"
+            timeperiod = 10
+        [indicators.rocp.charts]
+            lines = ["rocp"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.rocr]
+        return_cols = "rocr"
+        [indicators.rocr.inputs]
+            input_cols = "close"
+            timeperiod = 10
+        [indicators.rocr.charts]
+            lines = ["rocr"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.rocr100]
+        return_cols = "rocr100"
+        [indicators.rocr100.inputs]
+            input_cols = "close"
+            timeperiod = 10
+        [indicators.rocr100.charts]
+            lines = ["rocr100"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.rsi]
+        return_cols = "rsi"
+        [indicators.rsi.inputs]
+            input_cols = "close"
+            timeperiod = 14
+        [indicators.rsi.charts]
+            lines = []
+            subchart_lines = ["rsi"]
+            subchart_histos = []
+    
+    [indicators.stoch]
+        return_cols = ["stoch_d", "stoch_k"]
+        [indicators.stoch.inputs]
+            input_cols = ["close", "low", "high"]
+            fastk_period = 5
+            slowk_period = 3
+            slowd_period = 3
+        [indicators.stoch.charts]
+            lines = ["stoch_d", "stoch_k"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.stochf]
+        return_cols = ["stochf_d", "stochf_k"]
+        [indicators.stochf.inputs]
+            input_cols = ["close", "low", "high"]
+            fastk_period = 5
+            fastd_period = 3
+        [indicators.stochf.charts]
+            lines = ["stochf_d", "stochf_k"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.stochrsi]
+        return_cols = ["stochrsi_d", "stochrsi_k"]
+        [indicators.stochrsi.inputs]
+            input_cols = "close"
+            timeperiod = 14
+            fastk_period = 5
+            fastd_period = 3
+        [indicators.stochrsi.charts]
+            lines = ["stochrsi_d", "stochrsi_k"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.trix]
+        return_cols = "trix"
+        [indicators.trix.inputs]
+            input_cols = "close"
+            timeperiod = 30
+        [indicators.trix.charts]
+            lines = ["trix"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.ultosc]
+        return_cols = "ultosc"
+        [indicators.ultosc.inputs]
+            input_cols = ["close", "low", "high"]
+            timeperiod1 = 7
+            timeperiod2 = 14
+            timeperiod3 = 28
+        [indicators.ultosc.charts]
+            lines = ["ultosc"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    [indicators.willr]
+        return_cols = "willr"
+        [indicators.willr.inputs]
+            input_cols = ["close", "low", "high"]
+            timeperiod = 14
+        [indicators.willr.charts]
+            lines = ["willr"]
+            subchart_lines = []
+            subchart_histos = []
+    
+    ################################
+    ## Volume Indicator Functions ##
+    ################################
+    [indicators.ad]
+        return_cols = "ad"
+        [indicators.ad.inputs]
+            input_cols = ["volume", "close", "low", "high"]
+        [indicators.ad.charts]
+            lines = []
+            subchart_lines = ["ad"]
+            subchart_histos = []
+    
+    [indicators.adosc]
+        return_cols = "adosc"
+        [indicators.adosc.inputs]
+            input_cols = ["volume", "close", "low", "high"]
+            fastperiod = 3
+            slowperiod = 10
+        [indicators.adosc.charts]
+            lines = []
+            subchart_lines = ["adosc"]
+            subchart_histos = []
+    
+    [indicators.obv]
+        return_cols = "obv"
+        [indicators.obv.inputs]
+            input_cols = ["volume", "close"]
+        [indicators.obv.charts]
+            lines = []
+            subchart_lines = ["obv"]
+            subchart_histos = []
+    
+    ####################################
+    ## Volatility Indicator Functions ##
+    ####################################
+    [indicators.atr]
+        return_cols = "atr"
+        [indicators.atr.inputs]
+            input_cols = ["close", "low", "high"]
+            timeperiod = 14
+        [indicators.atr.charts]
+            lines = []
+            subchart_lines = ["atr"]
+            subchart_histos = []
+    
+    [indicators.natr]
+        return_cols = "natr"
+        [indicators.natr.inputs]
+            input_cols = ["close", "low", "high"]
+            timeperiod = 14
+        [indicators.natr.charts]
+            lines = []
+            subchart_lines = ["natr"]
+            subchart_histos = []
+    
+    [indicators.trange]
+        return_cols = "trange"
+        [indicators.trange.inputs]
+            input_cols = ["close", "low", "high"]
+        [indicators.trange.charts]
+            lines = []
+            subchart_lines = ["trange"]
+            subchart_histos = []
+    ###############################
+    ## Price Transform Functions ##
+    ###############################
+    ## not implemented
+    ## can be done in POLARS df
+
+    ###############################
+    ## Cycle Indicator Functions ##
+    ###############################
+    [indicators.ht_dcperiod]
+        return_cols = "ht_dcperiod"
+        [indicators.ht_dcperiod.inputs]
+            input_cols = "close"
+        [indicators.ht_dcperiod.charts]
+            lines = []
+            subchart_lines = ["ht_dcperiod"]
+            subchart_histos = []
+    
+    [indicators.ht_dcphase]
+        return_cols = "ht_dcphase"
+        [indicators.ht_dcphase.inputs]
+            input_cols = "close"
+        [indicators.ht_dcphase.charts]
+            lines = []
+            subchart_lines = ["ht_dcphase"]
+            subchart_histos = []
+    
+    [indicators.ht_phasor]
+        return_cols = ["quadrature", "inphase"]
+        [indicators.ht_phasor.inputs]
+            input_cols = "close"
+        [indicators.ht_phasor.charts]
+            lines = []
+            subchart_lines = ["quadrature", "inphase"]
+            subchart_histos = []
+    
+    [indicators.ht_sine]
+        return_cols = ["leadsine", "sine"]
+        [indicators.ht_sine.inputs]
+            input_cols = "close"
+        [indicators.ht_sine.charts]
+            lines = []
+            subchart_lines = ["leadsine", "sine"]
+            subchart_histos = []
+    
+    [indicators.ht_trendmode]
+        return_cols = "ht_trendmode"
+        [indicators.ht_trendmode.inputs]
+            input_cols = "close"
+        [indicators.ht_trendmode.charts]
+            lines = []
+            subchart_lines = ["ht_trendmode"]
+            subchart_histos = []
+    #########################
+    ## Statistic Functions ##
+    #########################

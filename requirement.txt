@@ -1,0 +1,7 @@
+polars
+pyarrow
+pandas
+lightweight-charts
+toml
+ta-lib
+pywebview[gtk]

@@ -1,0 +1,85 @@
+# StrategyBuilder
+
+A powerful tool for developing, testing, and analyzing trading strategies using Python and Polars.
+
+## Features
+
+- 📊 Strategy Development
+  - Create custom trading strategies using technical indicators
+  - Flexible signal generation system
+
+- 🔄 To DO
+- 📈 Performance Analysis
+- 🛠️ Strategy Optimization
+- 📊 Backtesting
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/StrategyBuilder.git
+```
+
+2. Create and activate a virtual environment:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+### Basic Example
+
+just run main.py
+- 1. select indicator library (currently only ta-lib and custom libs are supported)
+- 2. add indicators (click add button) 
+- 3. after don selecting indicators click next button
+- 4. [optional] if you want to add shift, rolling mean, etc then select on "special case windows" option and dont forgate to add 
+- 5. if dont want anything click next button
+- 6. on "create strategy window" select what do you want to do
+- 7. you can add multiple conditions there
+- 8. click finalise button to get strategy build
+
+
+
+## Data Requirements
+
+The tool expects your data to have at least these columns:
+- `date`: Date of the data point
+- `open`: Opening price
+- `high`: Highest price
+- `low`: Lowest price
+- `close`: Closing price
+- `volume`: Trading volume (optional)
+
+## Performance Metrics
+
+The tool calculates several important performance metrics:
+
+- Annual Returns: Compounded returns over the period
+- Volatility: Annualized standard deviation of returns
+- Sharpe Ratio: Risk-adjusted returns
+- Maximum Drawdown: Peak-to-trough decline
+- Sortino Ratio: Risk-adjusted returns focusing on downside volatility
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+## Acknowledgments
+
+- Thanks to the Polars team for their amazing DataFrame library
+- Special thanks to the open-source community for all the tools and libraries used in this project
