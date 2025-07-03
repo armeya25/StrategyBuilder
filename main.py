@@ -469,5 +469,5 @@ class Main(Builder):
     ############################################################################################################
     
 m = Main()
-m.output_file = "output.py"
+m.output_file = "testing.py"    ## or keep default "output.py"
 m.main()
