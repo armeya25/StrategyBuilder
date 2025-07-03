@@ -103,11 +103,13 @@ class Builder(Base):
                 ## if input_cols is single value
                 else:
                     if input_cols not in self.input_col_list:
+                        self.input_col_list.append(input_cols)
                         self.__lists_for_strategy['input_col_names'].append(input_cols)
                         col = f'input_{input_cols} = self.df.select("{input_cols}").to_series()'
                         self.__lists_for_strategy['input_col_str_list'].append(col)
+
                     tmp_input_cols = f'input_{input_cols}, {tmp_input_cols}'
-            
+                    
             ## for return cols / pre_cols
             return_cols = value['return_cols']
             if return_cols != 'None':

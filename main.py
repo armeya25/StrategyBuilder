@@ -469,5 +469,5 @@ class Main(Builder):
     ############################################################################################################
     
 m = Main()
-m.output_file = "strategy.py"
+m.output_file = "output.py"
 m.main()
