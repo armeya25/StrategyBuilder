@@ -39,7 +39,7 @@ pip install -r requirements.txt
 just run main.py
 - select indicator library (currently only ta-lib and custom libs are supported)
 - add indicators (click add button) 
-- after don selecting indicators click next button
+- after done selecting indicators click next button
 - [optional] if you want to add shift, rolling mean, etc then select on "special case windows" option and dont forgate to add 
 - if dont want anything click next button
 - on "create strategy window" select what do you want to do

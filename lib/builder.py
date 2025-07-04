@@ -246,7 +246,7 @@ class Builder(Base):
         with open(self.output_file, "w") as f:
             f.write("import random\n")
             f.write("import polars as pl\n")
-            #f.write(f"import {self.indicators_names}\n")
+            f.write('from lib.backtester import BacktestEngine\n')
             ## write indicators libraries that will be imported
             for indicator_lib in self.indicators_lib:
                 if indicator_lib == 'custom':
@@ -259,6 +259,7 @@ class Builder(Base):
             elif self.charting_lib == 'finplot':
                 f.write("import finplot as fplt\n")
             
+            f.write(f'\t{self.hashtag*5}\n')
             f.write('\nclass Strategy:\n')
             f.write('\tdef __init__(self, df:pl.DataFrame) -> None:\n')
             f.write('\t\tself.df = df\n')
@@ -310,10 +311,11 @@ class Builder(Base):
                     f.write('\t\t\t\t\t\t)\n')    ## close when condition
                     ##if there is no sell part
                     if not self.__lists_for_strategy['signal_sell']:
-                        f.write('\t\t\t\t\t\t.then(pl.lit("buy"))\n')
+                        f.write('\t\t\t\t\t\t.then(1)\n')
+                        f.write('\t\t\t\t\t\t.otherwise(0)\n')
                         f.write('\t\t\t\t\t\t.alias("signal")\n')
                     else:
-                        f.write('\t\t\t\t\t\t.then(pl.lit("buy"))\n')
+                        f.write('\t\t\t\t\t\t.then(1)\n')
 
                 ## if there is sell part
                 if self.__lists_for_strategy['signal_sell']:
@@ -323,12 +325,14 @@ class Builder(Base):
                     for c in col:
                         f.write(c)
                     f.write('\t\t\t\t\t\t)\n')    ## close when condition
-                    f.write('\t\t\t\t\t\t.then(pl.lit("sell"))\n')
+                    f.write('\t\t\t\t\t\t.then(0)\n')
+                    f.write('\t\t\t\t\t\t.otherwise(0)\n')
                     f.write('\t\t\t\t\t\t.alias("signal")\n')
 
                 f.write('\t\t\t\t\t)\n')        ## close with_columns
             ## write this at last part
             f.write('\t\t\t\t)\n')          ## closes self.df
+            f.writable('\t\treturn self.df')
             f.write(f'\t{self.hashtag*5}\n')
         f.close()
 
@@ -348,8 +352,15 @@ class Builder(Base):
         with open(self.output_file, "a") as f:
             f.write('df = pl.read_csv("sbin.csv")\n')
             f.write('s = Strategy(df)\n')
-            f.write('s.calculate()\n')
-            f.write('s.plot()')
+            f.write('sig_df = s.calculate()\n')
+            
+            f.write('backtest = BacktestEngine(df, initial_capital=10000, commission=0.001)\n')
+            f.write('backtest.add_signals(sig_df)\n')
+            f.write('results = backtest.run_backtest()\n')
+
+            f.write('print(backtest.get_summary())\n')
+            f.write('print(f"First 5 trades:")\n')
+            f.write('print(results["trades"].head())\n')
         f.close()
     ############################################################################################################
     def __signal_list_to_str(self, signal_list:list) -> str:
