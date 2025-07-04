@@ -1,3 +1,4 @@
+first install tk/tcl for your respective system.
 # StrategyBuilder
 
 A powerful tool for developing, testing, and analyzing trading strategies using Python and Polars.
